@@ -160,7 +160,7 @@ class PHPMercadoBitcoinAPI
         $response = json_decode($resquest->getBody());
         if (isset($response->error_message) && strpos($response->error_message, 'tapi_nonce'))
         {
-            throw new Exceptions\WrongNonceNumberException();
+            throw new Exceptions\WrongNonceNumberException($response->error_message);
         }
         
         return $response;
